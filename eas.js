@@ -1,6 +1,6 @@
 const viewHeight = window.innerHeight;
 const sideSquares = 16;
-const squareSize = viewHeight/ sideSquares;
+const squareSize = viewHeight/ (sideSquares + 4);
 console.log(squareSize);
 const container = document.getElementById("container");
 
@@ -22,3 +22,14 @@ while (columns < sideSquares) {
     }
     columns++;
 }
+
+leftKnob = document.getElementById("left-knob");
+
+function rotateKnob() {
+    // const rotation = leftKnob.style.transform;
+    // console.log(rotation);
+    leftKnob.style.transform = "rotate(45deg)";
+
+}
+container.style.margin = (squareSize * 2) + "px";
+container.addEventListener("mousemove", rotateKnob);
