@@ -1,9 +1,13 @@
 const viewHeight = window.innerHeight;
-const sideSquares = 16;
-const squareSize = viewHeight/ (sideSquares + 4);
-console.log(squareSize);
+const frameSize = viewHeight/10
+const frameThickness = 2 * frameSize;
+let sideSquares = 16;
+const squareSize = (viewHeight - frameThickness) / sideSquares;
 const container = document.getElementById("container");
+const frame = document.getElementById("frame");
 
+frame.style.height = viewHeight + "px";
+frame.style.width = frame.style.height;
 container.style.width = sideSquares * squareSize + "px";
 
 function changeColor() {
@@ -23,13 +27,38 @@ while (columns < sideSquares) {
     columns++;
 }
 
-leftKnob = document.getElementById("left-knob");
+// leftKnob = document.getElementById("left-knob");
+// rightKnob = document.getElementById("right-knob");
 
-function rotateKnob() {
-    // const rotation = leftKnob.style.transform;
-    // console.log(rotation);
-    leftKnob.style.transform = "rotate(45deg)";
+// let leftKnobRotation = 0;
+// let rightKnobRotation = 0;
 
-}
-container.style.margin = (squareSize * 2) + "px";
-container.addEventListener("mousemove", rotateKnob);
+// let oldX = 0;
+// let oldY = 0;
+
+// function rotateKnobs(event) {
+//     if (event.clientX > oldX) {
+//         leftKnobRotation += 5;
+//     } else if (event.clientX < oldX) {
+//         leftKnobRotation -= 5;
+//     } else {
+//         leftKnobRotation += 0;
+//     }
+
+//     if (event.clientY < oldY) {
+//         rightKnobRotation += 5;
+//     } else if (event.clientY > oldY) {
+//         rightKnobRotation -= 5;
+//     } else {
+//         rightKnobRotation += 0;
+//     }
+
+//     leftKnob.style.transform = "rotate(" + leftKnobRotation + "deg)";
+//     rightKnob.style.transform = "rotate(" + rightKnobRotation + "deg)";
+
+//     oldX = event.clientX;
+//     oldY = event.clientY;
+// }
+
+// container.style.margin = (frameSize) + "px";
+// container.addEventListener("mousemove", rotateKnobs);

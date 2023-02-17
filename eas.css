@@ -16,42 +16,43 @@ body {
         darkred
     );
     justify-content: center;
+    align-items: center;
     border-radius: 7.25%;
-    width: fit-content;
-    position: relative;
+    flex-direction: column;
 }
 
-#knobs {
-    display: flex;
+/* #knobs {
+    display: inline-flex;
     flex-direction: row;
-}
+    justify-content: space-between;
+} */
 
 #left-knob {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(
-        lightgray,
+        gray,
         white
     );
+    font-size: 24px;
 }
 
 #right-knob {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(
-        lightgray,
+        gray,
         white
     );
+    font-size: 24px;
 }
 
 #container {
