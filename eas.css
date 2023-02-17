@@ -6,12 +6,12 @@ body {
     background-color: darkblue;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #frame {
     display:flex;
-    background: linear-gradient(
-        to right,
+    background: radial-gradient(
         red,
         darkred
     );
@@ -19,40 +19,25 @@ body {
     align-items: center;
     border-radius: 7.25%;
     flex-direction: column;
+    margin-bottom: 0;
 }
 
-/* #knobs {
-    display: inline-flex;
-    flex-direction: row;
+#knobs {
+    display: flex;
     justify-content: space-between;
-} */
-
-#left-knob {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: radial-gradient(
-        gray,
-        white
-    );
-    font-size: 24px;
 }
 
-#right-knob {
+#knobs > #left-knob, #right-knob{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
     border-radius: 50%;
     background: radial-gradient(
         gray,
         white
     );
     font-size: 24px;
+
 }
 
 #container {
