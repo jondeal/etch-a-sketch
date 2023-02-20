@@ -8,6 +8,9 @@ const frame = document.getElementById("frame");
 const knobs = document.getElementById("knobs");
 const leftKnob = document.getElementById("left-knob");
 const rightKnob = document.getElementById("right-knob");
+const shakeButton = document.getElementById("shake-button");
+const squares = document.getElementsByClassName("square");
+const resolutionButton = document.getElementById("resolution")
 
 frame.style.maxHeight = viewHeight + "px";
 frame.style.width = frame.style.maxHeight;
@@ -31,6 +34,7 @@ while (columns < sideSquares) {
     newDiv.style.height = squareSize + "px";
     newDiv.style.width = squareSize + "px";
     newDiv.addEventListener("mouseover", changeColor);
+    newDiv.classList.add("square");
     container.append(newDiv);
     }
     columns++;
@@ -68,4 +72,24 @@ function rotateKnobs(event) {
     oldY = event.clientY;
 }
 
+function shakeSketch() {
+    frame.classList.remove("shake");
+    setTimeout(function(){
+        frame.classList.add("shake");}, 10);
+}
+
+function fadeSquares() {
+    for (const square of squares) {
+        square.classList.add("fade");
+        setTimeout(function(){
+            square.style.backgroundColor = "transparent";
+            square.classList.remove("fade");
+        }, 500);
+        }
+    }
+
+
 container.addEventListener("mousemove", rotateKnobs);
+
+shakeButton.addEventListener("click", shakeSketch);
+shakeButton.addEventListener("click", fadeSquares);
