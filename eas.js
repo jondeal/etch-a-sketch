@@ -2,10 +2,6 @@ const viewHeight = window.innerHeight;
 const frameSize = viewHeight/10
 const frameThickness = 2 * frameSize;
 
-let sideSquares = 100;
-
-const squareSize = (viewHeight - frameThickness) / sideSquares;
-
 const container = document.getElementById("container");
 const container2 = document.getElementById("container-2");
 const frame = document.getElementById("frame");
@@ -14,15 +10,9 @@ const leftKnob = document.getElementById("left-knob");
 const rightKnob = document.getElementById("right-knob");
 const shakeButton = document.getElementById("shake-button");
 const resolutionButton = document.getElementById("resolution")
-const squares = document.getElementsByClassName("square");
 
 frame.style.maxHeight = viewHeight + "px";
 frame.style.width = frame.style.maxHeight;
-container.style.width = sideSquares * squareSize + "px";
-container.style.height = container.style.width;
-container.style.marginTop = frameSize + "px";
-container2.style.width = container.style.width;
-container2.style.height = container.style.height;
 knobs.style.width = frame.style.width;
 leftKnob.style.height = frameSize + "px";
 leftKnob.style.width = frameSize + "px";
@@ -33,20 +23,30 @@ function changeColor() {
     this.style.backgroundColor = "black";
 }
 
-let columns = 0;
+function drawBoard(sideSquares) {
+    container.replaceChildren();
+    const squareSize = (viewHeight - frameThickness) / sideSquares;
+    container.style.width = sideSquares * squareSize + "px";
+    container.style.height = container.style.width;
+    container.style.marginTop = frameSize + "px";
+    container2.style.width = container.style.width;
+    container2.style.height = container.style.height;
 
-while (columns < sideSquares) {
-    for (i = 0; i < sideSquares; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.style.height = squareSize + "px";
-    newDiv.style.width = squareSize + "px";
-    newDiv.addEventListener("mouseover", changeColor);
-    newDiv.classList.add("square");
-    container.append(newDiv);
+    let columns = 0;
+
+    while (columns < sideSquares) {
+        for (i = 0; i < sideSquares; i++) {
+        const newDiv = document.createElement("div");
+        newDiv.style.height = squareSize + "px";
+        newDiv.style.width = squareSize + "px";
+        newDiv.addEventListener("mouseover", changeColor);
+        newDiv.classList.add("square");
+        container.append(newDiv);
+        }
+        columns++;
     }
-    columns++;
+    squares = document.getElementsByClassName("square");
 }
-
 
 
 let leftKnobRotation = 0;
@@ -96,8 +96,20 @@ function fadeSquares() {
         }
     }
 
+function drawPrompt() {
+    let sideSquares = prompt("Enter grid dimension (16 - 100)");
+    if (Number(sideSquares) >= 16 && Number(sideSquares) <= 100) {
+        drawBoard(sideSquares);
+    } else {
+        drawPrompt();
+    }
+
+}
 
 container.addEventListener("mousemove", rotateKnobs);
 
 shakeButton.addEventListener("click", shakeSketch);
 shakeButton.addEventListener("click", fadeSquares);
+resolutionButton.addEventListener("click", drawPrompt);
+
+drawBoard(16);
