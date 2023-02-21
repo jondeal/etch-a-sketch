@@ -109,11 +109,22 @@ body {
 }
 
 #container {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+    /* background: radial-gradient(
+        white,
+        lightslategray
+    ); */
+    cursor: none;
+    z-index: 1;
+}
+
+#container-2 {
+    position: absolute;
     background: radial-gradient(
         white,
         lightslategray
     );
-    cursor: none;
+    z-index: 0;
 }

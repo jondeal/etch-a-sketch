@@ -1,21 +1,28 @@
 const viewHeight = window.innerHeight;
 const frameSize = viewHeight/10
 const frameThickness = 2 * frameSize;
-let sideSquares = 16;
+
+let sideSquares = 100;
+
 const squareSize = (viewHeight - frameThickness) / sideSquares;
+
 const container = document.getElementById("container");
+const container2 = document.getElementById("container-2");
 const frame = document.getElementById("frame");
 const knobs = document.getElementById("knobs");
 const leftKnob = document.getElementById("left-knob");
 const rightKnob = document.getElementById("right-knob");
 const shakeButton = document.getElementById("shake-button");
-const squares = document.getElementsByClassName("square");
 const resolutionButton = document.getElementById("resolution")
+const squares = document.getElementsByClassName("square");
 
 frame.style.maxHeight = viewHeight + "px";
 frame.style.width = frame.style.maxHeight;
 container.style.width = sideSquares * squareSize + "px";
+container.style.height = container.style.width;
 container.style.marginTop = frameSize + "px";
+container2.style.width = container.style.width;
+container2.style.height = container.style.height;
 knobs.style.width = frame.style.width;
 leftKnob.style.height = frameSize + "px";
 leftKnob.style.width = frameSize + "px";
@@ -79,12 +86,13 @@ function shakeSketch() {
 }
 
 function fadeSquares() {
+    container.classList.remove("fade");
+    setTimeout(function(){
+        container.classList.add("fade");}, 10);
     for (const square of squares) {
-        square.classList.add("fade");
         setTimeout(function(){
             square.style.backgroundColor = "transparent";
-            square.classList.remove("fade");
-        }, 500);
+        }, 300);
         }
     }
 
