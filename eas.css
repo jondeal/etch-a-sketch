@@ -22,21 +22,6 @@ body {
     margin-bottom: 0;
 }
 
-#resolution {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    background: linear-gradient(
-        to top,
-        gray,
-        lightgray,
-        white
-    );
-    font-size: 24px;
-    color: goldenrod;
-}
-
 .shake {
     animation: shake 0.5s;
     animation-iteration-count: 1;
@@ -56,28 +41,10 @@ body {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-.fade {
-    animation: fade 0.5s;
-    animation-iteration-count: 1;
-}
-
-@keyframes fade {
-    0% {opacity: 1;}
-    10% {opacity: 0.9;}
-    20% {opacity: 0.8;}
-    30% {opacity: 0.7;}
-    40% {opacity: 0.6;}
-    50% {opacity: 0.5;}
-    60% {opacity: 0.4;}
-    70% {opacity: 0.3;}
-    80% {opacity: 0.2;}
-    90% {opacity: 0.1;}
-    100% {opacity: 0;}
-}
-
 #knobs {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #knobs > #left-knob, #right-knob{
@@ -106,16 +73,33 @@ body {
     );
     font-size: 24px;
     color: goldenrod;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    height: 1.5em;
+}
+
+#resolution-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: linear-gradient(
+        to top,
+        gray,
+        lightgray,
+        white
+    );
+    font-size: 24px;
+    color: goldenrod;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 1.5em;
 }
 
 #container {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    /* background: radial-gradient(
-        white,
-        lightslategray
-    ); */
     cursor: none;
     z-index: 1;
 }
@@ -127,4 +111,23 @@ body {
         lightslategray
     );
     z-index: 0;
+}
+
+.fade {
+    animation: fade 0.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes fade {
+    0% {opacity: 1;}
+    10% {opacity: 0.9;}
+    20% {opacity: 0.8;}
+    30% {opacity: 0.7;}
+    40% {opacity: 0.6;}
+    50% {opacity: 0.5;}
+    60% {opacity: 0.4;}
+    70% {opacity: 0.3;}
+    80% {opacity: 0.2;}
+    90% {opacity: 0.1;}
+    100% {opacity: 0;}
 }

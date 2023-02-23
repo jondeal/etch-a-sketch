@@ -9,7 +9,7 @@ const knobs = document.getElementById("knobs");
 const leftKnob = document.getElementById("left-knob");
 const rightKnob = document.getElementById("right-knob");
 const shakeButton = document.getElementById("shake-button");
-const resolutionButton = document.getElementById("resolution")
+const resolutionButton = document.getElementById("resolution-button")
 
 frame.style.maxHeight = viewHeight + "px";
 frame.style.width = frame.style.maxHeight;
@@ -98,10 +98,10 @@ function fadeSquares() {
 
 function drawPrompt() {
     let sideSquares = prompt("Enter grid dimension (16 - 100)");
-    if (Number(sideSquares) >= 16 && Number(sideSquares) <= 100) {
+    if (sideSquares !== null && Number(sideSquares) >= 16 && Number(sideSquares) <= 100) {
         drawBoard(sideSquares);
     } else {
-        drawPrompt();
+        return;
     }
 
 }
